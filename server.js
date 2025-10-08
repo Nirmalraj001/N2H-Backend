@@ -3,6 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const cors = require('cors');
+const http = require('http');
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
@@ -24,7 +25,10 @@ const app = express();
 connectDB();
 
 // Middlewares
-app.use(cors({ origin: "*" }));
+app.use(cors({
+  origin: ["https://n2h-enterprises.vercel.app/", "http://localhost:5173"],
+  credentials: true
+}));
 
 app.use(express.json());
 if (process.env.NODE_ENV !== 'test') {
@@ -50,9 +54,15 @@ app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Server running on port ${PORT}`);
+const HOST = '0.0.0.0';
+
+const server = http.createServer(app);
+
+server.keepAliveTimeout = 120000; // 120s
+server.headersTimeout = 120000;  
+
+server.listen(PORT, HOST, () => {
+  console.log(`✅ Server running on http://${HOST}:${PORT}`);
 });
 
 module.exports = app;
