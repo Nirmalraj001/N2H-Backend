@@ -26,7 +26,7 @@ connectDB();
 // Middlewares
 app.use(
   cors({
-    origin: "http://localhost:5173", // frontend URL
+    origin: "*", // frontend URL
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true, // allow cookies/authorization headers
   })
