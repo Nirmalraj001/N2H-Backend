@@ -24,11 +24,23 @@ const app = express();
 // Connect DB
 connectDB();
 
-// Middlewares
+const allowedOrigins = [
+  "http://localhost:3000", 
+  "http://localhost:5173",          // local dev
+  "https://n2h-enterprises.vercel.app/" // deployed frontend
+];
+
 app.use(cors({
-  origin: "*",
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
+
 
 app.use(express.json());
 if (process.env.NODE_ENV !== 'test') {
