@@ -24,13 +24,8 @@ const app = express();
 connectDB();
 
 // Middlewares
-app.use(
-  cors({
-    origin: "*", // frontend URL
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    credentials: true, // allow cookies/authorization headers
-  })
-);
+app.use(cors({ origin: "*" }));
+
 app.use(express.json());
 if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('dev'));
