@@ -18,12 +18,12 @@
     "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.3",
     "@babel/core": "^7.28.4",
-    "@babel/preset-env": "^7.28.3",
-    "nodemon": "^3.1.0"
+    "@babel/preset-env": "^7.28.3"
   }
 }
