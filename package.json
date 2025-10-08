@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
+    "build": "echo \"Render build: no build step\"",
     "seed": "node seed/seed.js"
   },
   "dependencies": {
