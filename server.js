@@ -26,7 +26,7 @@ connectDB();
 
 // Middlewares
 app.use(cors({
-  origin: ["https://n2h-enterprises.vercel.app/", "http://localhost:5173"],
+  origin: "*",
   credentials: true
 }));
 
